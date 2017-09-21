@@ -5,9 +5,8 @@ app.controller('mainController', function($interval) {
 
   vm.timer = new Timer(120);
 
-  console.log(vm.timer);
+  // will decrament the timer on page load. runs as many times as timer is set to run.
   $interval(()=> {
     vm.timer.decramentTime();
-    console.log(vm.timer);
-  }, 1000, vm.timer.time);
+  }, 1000, vm.timer.time); // end $interval
 });

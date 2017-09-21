@@ -4,9 +4,10 @@
     <meta charset="utf-8">
     <title>exercise</title>
   </head>
+
   <body ng-controller="mainController as mc">
-    <h1>Testing</h1>
-    <h2>{{mc.timer.timeLeft}}</h2>
+    <ng-view></ng-view>
+    <!-- scripts -->
     <script src="vendors/jquery.min.js" charset="utf-8"></script>
     <script src="vendors/angular.min.js" charset="utf-8"></script>
     <script src="scripts/timer.js" charset="utf-8"></script>
@@ -14,4 +15,5 @@
     <script src="scripts/workout.js" charset="utf-8"></script>
     <script src="scripts/app.js" charset="utf-8"></script>
   </body>
+
 </html>
