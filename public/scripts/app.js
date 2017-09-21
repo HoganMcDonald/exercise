@@ -1,5 +1,17 @@
 const app = angular.module('myApp', []);
 
+app.config(function($routeProvider) {
+  $routeProvider
+    .when('/', {
+      templateUrl: 'views/partials/settings.html',
+      controller: 'mainController as mc'
+    })
+    .when('/workout', {
+      templateUrl: 'views/partials/workout.html',
+      controller: 'mainController as mc'
+    })
+});
+
 app.controller('mainController', function($interval) {
   let vm = this;
 
