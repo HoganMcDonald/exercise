@@ -5,6 +5,7 @@ const express = require('express'),
 
 const index = require('./modules/index');
 
+app.use(express.static('public'));
 app.use('/', index);
 
 app.listen(process.env.PORT, ()=> {
