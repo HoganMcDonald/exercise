@@ -1,3 +1,7 @@
+const intervalLength = 60;
+const restLength = 30;
+const reps = 20;
+
 const app = angular.module('myApp', ['ngRoute']);
 
 app.config(function($routeProvider) {
@@ -12,14 +16,37 @@ app.config(function($routeProvider) {
     })
 });
 
-app.controller('mainController', function($interval) {
+// service used for storing session information when partial is switched
+app.service('cache', function() {
+  let sv = this;
+
+  // cached values. start with defaults identical to those in controller
+  sv.queue = [];
+  sv.intervalLength = intervalLength; // durration of each exercise
+  sv.restLength = restLength; // duration of each rest period
+  sv.reps = reps; // total number of cycles
+
+  // function that overwrites cache defaults
+  sv.overWriteCache = function() {
+
+  };
+});
+
+app.controller('mainController', function($interval, $location, cache) {
   let vm = this;
 
-  vm.intervalLength = 60;
-  vm.restLength = 30;
-  vm.reps = 20;
+  vm.intervalLength = intervalLength; // durration of each exercise
+  vm.restLength = restLength; // duration of each rest period
+  vm.reps = reps; // total number of cycles
+  vm.queue = []; // que of alternating workouts and rests executed from [0] - [queue.length-1]
 
-
+  vm.sendForm = ()=> {
+    for (var i = 0; i < vm.reps; i++) {
+      vm.queue.push(new Workout(i, intervalLength, false));
+      vm.queue.push(new Workout(i, restLength, true));
+      $location.path('/workout');
+    }
+  };
 
   vm.timer = new Timer(120);
 
