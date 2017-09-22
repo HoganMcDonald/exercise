@@ -1,4 +1,4 @@
-const app = angular.module('myApp', []);
+const app = angular.module('myApp', ['ngRoute']);
 
 app.config(function($routeProvider) {
   $routeProvider
@@ -14,6 +14,12 @@ app.config(function($routeProvider) {
 
 app.controller('mainController', function($interval) {
   let vm = this;
+
+  vm.intervalLength = 60;
+  vm.restLength = 30;
+  vm.reps = 20;
+
+
 
   vm.timer = new Timer(120);
 
