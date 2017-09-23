@@ -27,9 +27,12 @@ app.service('cache', function() {
   sv.reps = reps; // total number of cycles
 
   // function that overwrites cache defaults
-  sv.overWriteCache = function() {
-
-  };
+  sv.overwriteCache = function(queue) {
+    sv.queue = queue;
+    sv.intervalLength = queue[0].timer.time; // grabs intervalLength from first item in queue
+    sv.restLength = queue[1].timer.time; // grabs restLength from second item in queue
+    sv.reps = queue.length / 2; // determines number of cycles from queue
+  }; // end overwrites
 });
 
 app.controller('mainController', function($interval, $location, cache) {
@@ -46,14 +49,27 @@ app.controller('mainController', function($interval, $location, cache) {
       vm.queue.push(new Workout(i, intervalLength, false));
       vm.queue.push(new Workout(i, restLength, true));
     }
-    console.log(vm.queue);
+    cache.overwriteCache(vm.queue);
     $location.path('/workout');
   };
 
-  vm.timer = new Timer(120);
+  // pulls data from cache service and replaces them on controller
+  vm.retrieveCache = function() {
+    vm.queue = cache.queue;
+    vm.intervalLength = cache.intervalLength;
+    vm.restLength = cache.restLength;
+    vm.reps = cache.reps;
+    console.log(vm.queue);
+    vm.execute();
+  }; // end retrieveCache
 
-  // will decrament the timer on page load. runs as many times as timer is set to run.
-  $interval(()=> {
-    vm.timer.decramentTime();
-  }, 1000, vm.timer.time); // end $interval
+  // executes workouts
+  vm.execute = function() {
+    // store the first index and last index in vm.queue
+    let current = 0; // int
+    let end = vm.queue.length - 1; // int
+
+    
+  }; // end execute
+
 });
