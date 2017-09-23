@@ -40,12 +40,14 @@ app.controller('mainController', function($interval, $location, cache) {
   vm.reps = reps; // total number of cycles
   vm.queue = []; // que of alternating workouts and rests executed from [0] - [queue.length-1]
 
+  // creates queue and changes partial
   vm.sendForm = ()=> {
     for (var i = 0; i < vm.reps; i++) {
       vm.queue.push(new Workout(i, intervalLength, false));
       vm.queue.push(new Workout(i, restLength, true));
-      $location.path('/workout');
     }
+    console.log(vm.queue);
+    $location.path('/workout');
   };
 
   vm.timer = new Timer(120);

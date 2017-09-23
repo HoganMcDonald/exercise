@@ -11,7 +11,10 @@
       <label for="reps">Length:</label>
       <input type="range" ng-model="mc.reps" class="slider reps" max="50" min="1">
       <h3>{{mc.reps}} exercises</h3>
-      <button type="button" name="start" ng-click="mc.validateForm()">Start</button>
+      <button type="button" name="start" ng-click="mc.sendForm()">Start</button>
     </form>
+
+    <h1>Total Time:</h1>
+    <h2>{{(((mc.intervalLength * mc.reps) + (mc.restLength * mc.reps) - mc.restLength) / 60).toFixed(1)}} Minutes</h2>
   </div>
 </div>
