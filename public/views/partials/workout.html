@@ -1,3 +1,5 @@
 <div class="exercises" ng-init="mc.retrieveCache()">
-  <h3>{{mc.currentWorkout.timer.timeLeft}}</h3>
+  <h1>{{mc.current.workout.name}}</h1>
+  <h3>{{mc.current.timer.timeLeft}}</h3>
+  <img ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">
 </div>

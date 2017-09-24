@@ -3,7 +3,7 @@ class Timer {
     this.time = startTime; // int - total seconds left
     this.secondsLeft = '00'; // str - seconds left in countdown excluding minutes
     this.minutesLeft = '0'; // str - minutes left in countdown
-    this.timeLeft = `${this.minutesLeft}:${this.secondsLeft}`; // str - actual text display of timer. 0:00
+    this.timeLeft = this.displayTime(); // str - actual text display of timer. 0:00
   }
 
   // can be used to run the countdown by decrementing time and rerendering

@@ -45,9 +45,10 @@ app.controller('mainController', function($interval, $location, cache) {
 
   // creates queue and changes partial
   vm.sendForm = ()=> {
-    for (var i = 0; i < vm.reps; i++) {
-      vm.queue.push(new Workout(i, intervalLength, false));
-      vm.queue.push(new Workout(i, restLength, true));
+    // items are added in pairs so i increments by 2. workout.index is equal to position in array for reference later.
+    for (var i = 0; i < vm.reps * 2; i+= 2) {
+      vm.queue.push(new Workout(i, vm.intervalLength, false));
+      vm.queue.push(new Workout(i + 1, vm.restLength, true));
     }
     cache.overwriteCache(vm.queue);
     $location.path('/workout');
@@ -60,16 +61,29 @@ app.controller('mainController', function($interval, $location, cache) {
     vm.restLength = cache.restLength;
     vm.reps = cache.reps;
     console.log(vm.queue);
-    vm.execute();
+    vm.execute(); // run the routine
   }; // end retrieveCache
 
   // executes workouts
   vm.execute = function() {
     // store the first index and last index in vm.queue
-    let current = 0; // int
-    let end = vm.queue.length - 1; // int
-
-    
+    let end = vm.queue[vm.queue.length - 1]; // last object in array
+    let currentIndex = 0; // int - start of array
+    vm.current = vm.queue[0]; // current workout object
+    vm.step();
   }; // end execute
+
+  // a single step in the loop. used recursively.
+  vm.step = function() {
+    console.log('step called');
+    $interval(()=> {
+      console.log('stepped');
+      vm.current.timer.decramentTime();
+      if (vm.current.timer.time === 0) {
+        vm.current = vm.queue[vm.current.index + 1];
+        vm.step()
+      }
+    }, 1000, vm.current.timer.time); // end interval
+  }; // end step
 
 });
