@@ -23,11 +23,11 @@ class Workout {
     // checks if rest is true. IMPORTANT: this prevents infinite loop because do/while would always return the same index.
     if (!this.rest) {
       let excluded = this.workout.id;
-      let replacement;
+      let replacement = this.pickWorkout();
       // will populate replacement and continue repopulating until replacement is not
-      do {
-        let replacement = this.pickWorkout();
-      } while (replacement.id == excluded);
+      while (replacement.id === excluded) {
+        replacement = this.pickWorkout();
+      }
       this.workout = replacement;
     } // end check if rest
   } // end differentWorkout

@@ -42,6 +42,7 @@ app.controller('mainController', function($interval, $location, cache) {
   vm.restLength = restLength; // duration of each rest period
   vm.reps = reps; // total number of cycles
   vm.queue = []; // que of alternating workouts and rests executed from [0] - [queue.length-1]
+  vm.pause = false; // when true, timer will not decrament when step is called
 
   // creates queue and changes partial
   vm.sendForm = ()=> {
@@ -75,15 +76,30 @@ app.controller('mainController', function($interval, $location, cache) {
 
   // a single step in the loop. used recursively.
   vm.step = function() {
-    console.log('step called');
     $interval(()=> {
-      console.log('stepped');
-      vm.current.timer.decramentTime();
-      if (vm.current.timer.time === 0) {
-        vm.current = vm.queue[vm.current.index + 1];
-        vm.step()
-      }
+      if (!vm.pause) {
+        vm.current.timer.decramentTime();
+        if (vm.current.timer.time === 0) {
+          vm.current = vm.queue[vm.current.index + 1];
+          vm.step()
+        } // end check if at the end of timer
+      } // end check if timer is paused
     }, 1000, vm.current.timer.time); // end interval
   }; // end step
+
+  // changes the workout on the current item in the queue. Will not restart the timer.
+  vm.changeWorkout = function() {
+    vm.current.differentWorkout();
+  }; // end changeWorkout
+
+  // will pause the countdown and change button
+  vm.togglePlay = function functionName() {
+    vm.pause = !vm.pause;
+  }; // end togglePlay
+
+  // will skip to the next item in the queue
+  vm.nextWorkout = function() {
+    vm.current = vm.queue[vm.current.index + 1];
+  }; // end nextWorkout
 
 });
