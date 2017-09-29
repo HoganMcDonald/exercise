@@ -43,8 +43,8 @@ app.controller('mainController', function($interval, $location, cache) {
   vm.reps = reps; // total number of cycles
   vm.queue = []; // que of alternating workouts and rests executed from [0] - [queue.length-1]
   vm.pause = false; // when true, timer will not decrament when step is called
-  vm.playPauseIcon = 'assets/icons/play.svg';
-
+  vm.playPauseIcon = 'assets/icons/pause.svg';
+  vm.progressPercentage = 0; // int - represents how far in the queue you are. Used for css style.
 
   // creates queue and changes partial
   vm.sendForm = ()=> {
@@ -73,6 +73,7 @@ app.controller('mainController', function($interval, $location, cache) {
     let end = vm.queue[vm.queue.length - 1]; // last object in array
     let currentIndex = 0; // int - start of array
     vm.current = vm.queue[0]; // current workout object
+    vm.updateProgress();
     vm.step();
   }; // end execute
 
@@ -83,6 +84,7 @@ app.controller('mainController', function($interval, $location, cache) {
         vm.current.timer.decramentTime();
         if (vm.current.timer.time === 0) {
           vm.current = vm.queue[vm.current.index + 1];
+          vm.updateProgress();
           vm.step()
         } // end check if at the end of timer
       } // end check if timer is paused
@@ -107,11 +109,25 @@ app.controller('mainController', function($interval, $location, cache) {
   // will skip to the next item in the queue
   vm.nextWorkout = function() {
     vm.current = vm.queue[vm.current.index + 1];
+    vm.updateProgress();
   }; // end nextWorkout
 
   // returns to home screen
   vm.back = function() {
     $location.path('/');
   }; // end back function
+
+  // adjust progressBar
+  vm.updateProgress = function() {
+    // .progressBar - container div
+    // .completed - orange bar on workout view
+    let queueLength = vm.queue.length;
+    let currentPosition = vm.current.index + 1;
+    console.log(queueLength);
+    console.log(currentPosition);
+    vm.progressPercentage = (currentPosition / queueLength * 100).toFixed(0);
+    console.log(vm.progressPercentage);
+    $('.completed').css('width', vm.progressPercentage + '%');
+  }; // end update progressBar
 
 });
