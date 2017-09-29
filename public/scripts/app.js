@@ -123,10 +123,7 @@ app.controller('mainController', function($interval, $location, cache) {
     // .completed - orange bar on workout view
     let queueLength = vm.queue.length;
     let currentPosition = vm.current.index + 1;
-    console.log(queueLength);
-    console.log(currentPosition);
     vm.progressPercentage = (currentPosition / queueLength * 100).toFixed(0);
-    console.log(vm.progressPercentage);
     $('.completed').css('width', vm.progressPercentage + '%');
   }; // end update progressBar
 

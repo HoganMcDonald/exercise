@@ -38,5 +38,6 @@ class Timer {
     this.minutesLeft = ((this.time - Number(this.secondsLeft)) / 60).toFixed(0);
     // render timeLeft
     this.timeLeft = `${this.minutesLeft}:${this.secondsLeft}`;
+    return this.timeLeft; // not my favorite solution... but without this line the timer will not display first second.
   }
 }
