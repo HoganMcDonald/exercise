@@ -1,8 +1,15 @@
 <div class="exercises" ng-init="mc.retrieveCache()">
-  <h1>{{mc.current.workout.name}}</h1>
-  <h3>{{mc.current.timer.timeLeft || '0:00'}}</h3>
-  <img ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">
-  <button type="button" name="pause" ng-click="mc.togglePlay()">Pause</button>
-  <button type="button" name="Change" ng-click="mc.changeWorkout()">Shuffle</button>
-  <button type="button" name="skip" ng-click="mc.nextWorkout()">Skip</button>
+  <h1 class="workoutName">{{mc.current.workout.name}}</h1>
+  <h3 class="timer">{{mc.current.timer.timeLeft}}</h3>
+  <img class="gif" ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">
+  <div class="controls">
+    <button class="control" type="button" name="pause" ng-click="mc.togglePlay()">Pause</button>
+    <button class="control" type="button" name="Change" ng-click="mc.changeWorkout()">Shuffle</button>
+    <button class="control" type="button" name="skip" ng-click="mc.nextWorkout()">Skip</button>
+  </div>
+  <div class="progressBar">
+    <div class="completed">
+
+    </div>
+  </div>
 </div>

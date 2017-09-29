@@ -1,0 +1,45 @@
+$accent1: #db6343
+$accent2: #3373f1
+
+$button-background: #d6d6d6
+$button-foreground: #757575
+
+$font-family: "roboto", sans-serif
+
+.exercises
+  .workoutName
+  .timer
+    margin: 0
+    position: fixed
+    bottom: 2vh
+    left: 50%
+    transform: translateX(-50%)
+    font:
+      size: 8em
+      family: $font-family
+  .gif
+  .controls
+    height: 10vh
+    width: 100%
+    position: fixed
+    bottom: 11vh
+    display: grid
+    grid-template-columns: auto auto auto
+    .control
+      background-color: $button-background
+      color: $button-foreground
+      border: 1px solid $button-foreground
+      margin: 0
+      padding: 0
+      height: 100%
+      width: 100%
+  .progressBar
+    position: fixed
+    bottom: 0
+    left: 0
+    height: 1.5vh
+    width: 100%
+    .completed
+      height: 100%
+      width: 50%
+      background-color: $accent1
