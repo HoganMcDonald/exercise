@@ -1,6 +1,6 @@
 <div class="exercises" ng-init="mc.retrieveCache()">
   <h1>{{mc.current.workout.name}}</h1>
-  <h3>{{mc.current.timer.timeLeft}}</h3>
+  <h3>{{mc.current.timer.timeLeft || '0:00'}}</h3>
   <img ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">
   <button type="button" name="pause" ng-click="mc.togglePlay()">Pause</button>
   <button type="button" name="Change" ng-click="mc.changeWorkout()">Shuffle</button>
