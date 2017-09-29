@@ -1,20 +1,26 @@
 <div class="settings">
-  <div class="controlls">
+  <div class="header">
     <h1>Settings</h1>
+  </div>
+
+  <div class="controlls">
+
     <form class="controllsForm">
-      <label for="intervalLength">Work:</label>
+      <label for="intervalLength">Work:</label><br>
       <input type="range" ng-model="mc.intervalLength" class="slider intervalLength" max="240" min="10" step="10">
       <h3>{{mc.intervalLength}} seconds</h3>
-      <label for="restLength">Rest:</label>
+      <label for="restLength">Rest:</label><br>
       <input type="range" ng-model="mc.restLength" class="slider restLength" max="120" min="10" step="10">
       <h3>{{mc.restLength}} seconds</h3>
-      <label for="reps">Length:</label>
+      <label for="reps">Length:</label><br>
       <input type="range" ng-model="mc.reps" class="slider reps" max="50" min="1">
       <h3>{{mc.reps}} exercises</h3>
-      <button type="button" name="start" ng-click="mc.sendForm()">Start</button>
+
     </form>
 
     <h1>Total Time:</h1>
     <h2>{{(((mc.intervalLength * mc.reps) + (mc.restLength * mc.reps) - mc.restLength) / 60).toFixed(1)}} Minutes</h2>
   </div>
+
+  <button class="startButton" type="button" name="start" ng-click="mc.sendForm()">Start</button>
 </div>

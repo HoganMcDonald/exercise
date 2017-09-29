@@ -1,24 +1,51 @@
-$settingsBackground: #db6343
-$panelBackground: #b7dbd0
-
 .settings
   position: fixed
   top: 0
   left: 0
   width: 100vw
   height: 100vh
-  background-color: $settingsBackground
   .controlls
-    width: 30vw
+    width: 80vw
     position: relative
-    top: 50%
+    top: 30%
     transform: translateY(-50%)
     margin: auto
     text-align: center
-    background-color: $panelBackground
-    h1
+    background-color: $button-background
+    padding: 3vh 0px
     form
       label
+        font:
+          family: $font-family
+          size: 2em
       input
+        width: 85%
+        height: 3vh
       h3
+        font:
+          family: $font-family
+          size: 1.5em
       button
+    h1
+      font:
+        family: $font-family
+        size: 4em
+    h2
+      font:
+        family: $font-family
+        size: 3em
+
+  .startButton
+    background-color: $accent1
+    border: 0
+    color: white
+    width: 80vw
+    height: 10vh
+    position: fixed
+    bottom: 10vh
+    left: 50%
+    transform: translateX(-50%)
+    text-transform: uppercase
+    font:
+      family: $font-family
+      size: 5em
