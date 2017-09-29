@@ -25,6 +25,7 @@ $font-family: "roboto", sans-serif
     bottom: 11vh
     display: grid
     grid-template-columns: auto auto auto
+    grid-template-rows: 10vh
     .control
       background-color: $button-background
       color: $button-foreground
@@ -33,6 +34,11 @@ $font-family: "roboto", sans-serif
       padding: 0
       height: 100%
       width: 100%
+      img
+        height: 40%
+        fill: $button-foreground
+      &:focus
+        outline: none
   .progressBar
     position: fixed
     bottom: 0

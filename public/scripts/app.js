@@ -43,6 +43,8 @@ app.controller('mainController', function($interval, $location, cache) {
   vm.reps = reps; // total number of cycles
   vm.queue = []; // que of alternating workouts and rests executed from [0] - [queue.length-1]
   vm.pause = false; // when true, timer will not decrament when step is called
+  vm.playPauseIcon = 'assets/icons/play.svg';
+
 
   // creates queue and changes partial
   vm.sendForm = ()=> {
@@ -95,6 +97,11 @@ app.controller('mainController', function($interval, $location, cache) {
   // will pause the countdown and change button
   vm.togglePlay = function functionName() {
     vm.pause = !vm.pause;
+    if (vm.playPauseIcon === 'assets/icons/play.svg') {
+      vm.playPauseIcon = 'assets/icons/pause.svg';
+    } else {
+      vm.playPauseIcon = 'assets/icons/play.svg';
+    }
   }; // end togglePlay
 
   // will skip to the next item in the queue

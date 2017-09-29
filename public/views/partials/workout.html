@@ -4,9 +4,15 @@
   <h3 class="timer">{{mc.current.timer.timeLeft}}</h3>
   <img class="gif" ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">
   <div class="controls">
-    <button class="control" type="button" name="pause" ng-click="mc.togglePlay()">Pause</button>
-    <button class="control" type="button" name="Change" ng-click="mc.changeWorkout()">Shuffle</button>
-    <button class="control" type="button" name="skip" ng-click="mc.nextWorkout()">Skip</button>
+    <button class="control" type="button" name="Change" ng-click="mc.changeWorkout()">
+      <img src="assets/icons/shuffle.svg" alt="shuffle">
+    </button>
+    <button class="control" type="button" name="pause" ng-click="mc.togglePlay()">
+      <img ng-src="{{mc.playPauseIcon}}" alt="play/pause">
+    </button>
+    <button class="control" type="button" name="skip" ng-click="mc.nextWorkout()">
+      <img src="assets/icons/skip.svg" alt="">
+    </button>
   </div>
   <div class="progressBar">
     <div class="completed">
