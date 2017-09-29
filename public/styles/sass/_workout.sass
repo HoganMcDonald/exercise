@@ -7,7 +7,28 @@ $button-foreground: #757575
 $font-family: "roboto", sans-serif
 
 .exercises
-  .workoutName
+  .header
+    height: 10vh
+    width: 100%
+    background-color: $button-background
+    border-bottom: 8px solid $accent1
+    .backButton
+      position: absolute
+      left: 1vh
+      top: 1vh
+      height: 8vh
+      width: 8vh
+      img
+        height: 5vh
+    .workoutName
+      font:
+        size: 5em
+        family: $font-family
+      text-align: center
+      margin: 0
+      position: relative
+      top: 50%
+      transform: translateY(-50%)
   .timer
     margin: 0
     position: fixed
@@ -18,6 +39,8 @@ $font-family: "roboto", sans-serif
       size: 8em
       family: $font-family
   .gif
+    width: 100%
+    margin-top: 5vh
   .controls
     height: 10vh
     width: 100%
