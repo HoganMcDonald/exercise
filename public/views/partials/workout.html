@@ -1,4 +1,5 @@
 <div class="exercises" ng-init="mc.retrieveCache()">
+  <button type="button" name="back" ng-click="mc.back()">back</button>
   <h1 class="workoutName">{{mc.current.workout.name}}</h1>
   <h3 class="timer">{{mc.current.timer.timeLeft}}</h3>
   <img class="gif" ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">

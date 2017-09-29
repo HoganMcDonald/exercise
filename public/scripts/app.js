@@ -102,4 +102,9 @@ app.controller('mainController', function($interval, $location, cache) {
     vm.current = vm.queue[vm.current.index + 1];
   }; // end nextWorkout
 
+  // returns to home screen
+  vm.back = function() {
+    $location.path('/');
+  }; // end back function
+
 });
