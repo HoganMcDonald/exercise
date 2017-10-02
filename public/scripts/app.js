@@ -130,6 +130,10 @@ app.controller('mainController', function($interval, $location, cache) {
       if (!vm.pause) {
         vm.current.timer.decramentTime();
         if (vm.current.timer.time === 0) {
+          // check if current is last non-rest workout and stop the program.
+          if (vm.current.index === vm.queue[vm.queue.length - 2]) {
+            $location.path('/');
+          }
           vm.current = vm.queue[vm.current.index + 1];
           vm.updateProgress();
           vm.step()
