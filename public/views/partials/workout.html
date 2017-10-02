@@ -5,7 +5,10 @@
     </button>
     <h1 class="workoutName">{{mc.current.workout.name}}</h1>
   </div>
-  <img class="gif" ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}">
+  <img class="gif" ng-src="{{mc.current.workout.gifUrl}}" alt="{{mc.current.workout.name}}" ng-if="!mc.current.rest">
+  <div class="rest">
+    <div class="restBreathe" ng-if="mc.current.rest"></div>
+  </div>
   <div class="controls">
     <button class="control" type="button" name="Change" ng-click="mc.changeWorkout()">
       <img src="assets/icons/shuffle.svg" alt="shuffle">
