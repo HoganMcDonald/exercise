@@ -2,6 +2,9 @@ const intervalLength = 60;
 const restLength = 30;
 const reps = 20;
 
+const max = 120;
+const min = 10;
+
 const app = angular.module('myApp', ['ngRoute']);
 
 app.config(function($routeProvider) {
@@ -45,6 +48,50 @@ app.controller('mainController', function($interval, $location, cache) {
   vm.pause = false; // when true, timer will not decrament when step is called
   vm.playPauseIcon = 'assets/icons/pause.svg';
   vm.progressPercentage = 0; // int - represents how far in the queue you are. Used for css style.
+
+  // on click, decraments appropriate setting - model = str
+  vm.dec = function(model) {
+    switch (model) {
+      case 'interval':
+        if (vm.intervalLength - 10 >= min) {
+          vm.intervalLength = vm.intervalLength - 10;
+        }
+        break;
+      case 'rest':
+        if (vm.restLength - 10 >= min) {
+          vm.restLength = vm.restLength - 10;
+        }
+        break;
+      case 'reps':
+        if (vm.reps - 1 >= 1) {
+          vm.reps = vm.reps - 1;
+        }
+        break;
+      default:
+        break;
+    }
+  }; // end vm.dec
+
+  // on click, increments appropriate setting - model = str
+  vm.inc = function(model) {
+    switch (model) {
+      case 'interval':
+        if (vm.intervalLength + 10 <= max) {
+          vm.intervalLength = vm.intervalLength + 10;
+        }
+        break;
+      case 'rest':
+        if (vm.restLength + 10 <= max) {
+          vm.restLength = vm.restLength + 10;
+        }
+        break;
+      case 'reps':
+        vm.reps = vm.reps + 1;
+        break;
+      default:
+        break;
+    }
+  }; // end vm.inc
 
   // creates queue and changes partial
   vm.sendForm = ()=> {
