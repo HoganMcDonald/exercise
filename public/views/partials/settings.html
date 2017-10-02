@@ -4,17 +4,25 @@
   </div>
 
   <div class="controlls">
-
     <form class="controllsForm">
-      <label for="intervalLength">Work:</label><br>
-      <input type="range" ng-model="mc.intervalLength" class="slider intervalLength" max="240" min="10" step="10">
-      <h3>{{mc.intervalLength}} seconds</h3>
-      <label for="restLength">Rest:</label><br>
-      <input type="range" ng-model="mc.restLength" class="slider restLength" max="120" min="10" step="10">
-      <h3>{{mc.restLength}} seconds</h3>
-      <label for="reps">Length:</label><br>
-      <input type="range" ng-model="mc.reps" class="slider reps" max="50" min="1">
-      <h3>{{mc.reps}} exercises</h3>
+
+      <div class="inputGrid">
+        <label for="intervalLength">Seconds of Work:</label>
+        <input type="button" class="decButton" ng-click="mc.dec(interval)" value="-">
+        <h3>{{mc.intervalLength}}</h3>
+        <input type="button" class="incButton" ng-click="mc.inc(interval)" value="+">
+
+        <label for="restLength">Seconds of Rest:</label>
+        <input type="button" class="decButton" ng-click="mc.dec(rest)" value="-">
+        <h3>{{mc.restLength}}</h3>
+        <input type="button" class="incButton" ng-click="mc.inc(interval)" value="+">
+
+        <label for="reps">Number of Exercises:</label>
+        <input type="button" class="decButton" ng-click="mc.dec(reps)" value="-">
+        <h3>{{mc.reps}}</h3>
+        <input type="button" class="incButton" ng-click="mc.inc(interval)" value="+">
+      </div>
+
 
     </form>
 

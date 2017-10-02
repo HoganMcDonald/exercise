@@ -99,6 +99,7 @@ app.controller('mainController', function($interval, $location, cache) {
   // will pause the countdown and change button
   vm.togglePlay = function functionName() {
     vm.pause = !vm.pause;
+    console.log(vm.pause);
     if (vm.playPauseIcon === 'assets/icons/play.svg') {
       vm.playPauseIcon = 'assets/icons/pause.svg';
     } else {

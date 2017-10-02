@@ -7,25 +7,55 @@
   .controlls
     width: 80vw
     position: relative
-    top: 30%
+    top: 35%
     transform: translateY(-50%)
     margin: auto
     text-align: center
-    background-color: $button-background
+    // background-color: $button-background
     padding: 3vh 0px
     form
+      height: 100%
+      .inputGrid
+        display: grid
+        grid-template-columns: 33% auto 33%
+        grid-template-rows: 5vh 7vh 5vh 7vh 5vh 7vh
+        grid-row-gap: 2vh
       label
+        grid-column-start: 1
+        grid-column-end: span 3
+        align-self: center
         font:
           family: $font-family
           size: 2em
-      input
-        width: 85%
-        height: 3vh
       h3
         font:
           family: $font-family
-          size: 1.5em
-      button
+          size: 5em
+        margin: 0
+        align-self: center
+
+      input
+      .decButton
+        border: 0
+        height: 7vh
+        width: 100%
+        padding: 0
+        border: 2px solid $button-foreground
+        background-color: $button-background
+        color: $button-foreground
+        font:
+          family: $font-family
+          size: 5em
+      .incButton
+        border: 0
+        height: 100%
+        width: 100%
+        border: 2px solid $button-foreground
+        background-color: $button-background
+        color: $accent1
+        font:
+          family: $font-family
+          size: 5em
     h1
       font:
         family: $font-family
